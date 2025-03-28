@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:layouts="clr-namespace:PruebaTecnica.Presentation.Resources.Styles"
+             xmlns:Labels="clr-namespace:PruebaTecnica.Presentation.Labels"
+             xmlns:Models="clr-namespace:PruebaTecnica.Presentation.ViewModel"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
+             x:DataType="Models:LoginViewModel"
+             Shell.NavBarIsVisible="False"
+             x:Class="PruebaTecnica.Presentation.Views.LoginView"             
+             Title="LoginView">
+    <Grid HorizontalOptions="Fill"
+          VerticalOptions="Fill"
+          Padding="{x:StaticResource Margin}"
+          RowDefinitions="*,*,*,*,*,*,*,*"
+          ColumnDefinitions="*">
+        <Label Text="{x:Static Labels:Labels.Email}"               
+               Grid.Row="3"
+               Grid.Column="1"
+               HorizontalOptions="Start"/>
+        <Entry HorizontalOptions="Fill"
+               VerticalOptions="Center"
+               Placeholder="{x:Static Labels:Labels.Email}"
+               Text="{Binding Email, Mode=TwoWay}"
+               Grid.Row="3"
+               Grid.Column="1"/>
+
+        <Label Text="{x:Static Labels:Labels.Password}"  
+               VerticalOptions="Start"
+               Grid.Row="4"
+               Grid.Column="1"
+               HorizontalOptions="Start"/>
+        <Entry HorizontalOptions="Fill"
+               VerticalOptions="Center"
+               Placeholder="{x:Static Labels:Labels.Password}"
+               Text="{Binding Password, Mode=TwoWay}"
+               Grid.Row="4"
+               Grid.Column="1"/>
+
+        <Button Text="{x:Static Labels:Labels.Login}"
+                VerticalOptions="Start"
+                Command="{Binding LoginCommand}"
+                Grid.Row="5"
+                Grid.Column="1"/>
+
+        <Button Text="{x:Static Labels:Labels.LoginWithMSAL}"
+                VerticalOptions="End"
+                Command="{Binding LoginWithMSALCommand}"
+                Grid.Row="5"
+                Grid.Column="1"/>
+        
+        <StackLayout HorizontalOptions="Center"
+                     VerticalOptions="End"
+                     Grid.Row="6"
+                     Grid.Column="1"
+                     Spacing="{StaticResource Margin}">
+            <Border HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Margin="0"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    IsVisible="{Binding IsBiometricActivated}"
+                    Padding="3"
+                    Grid.Row="0"
+                    Grid.Column="2">
+                <ffimageloading:CachedImage CacheDuration="10"
+                                            InputTransparent="True"
+                                            Source="{Binding BiometricIcon}"/>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding LoginWithBiometricCommand}"/>
+                </Border.GestureRecognizers>
+            </Border>
+
+            <Label Text="{Binding BiometricLegend}"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   VerticalTextAlignment="Center"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>
