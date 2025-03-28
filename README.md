@@ -23,15 +23,18 @@
 
 - Arquitectura limpia (Clean Architecture)
 - Patrón MVVM (con CommunityToolkit.MVVM) 
-Consumo eficiente de API REST usando HttpClient
-Autenticación mediante OAuth 2.0 usando MSAL
-- Almacenamiento seguro de tokens (SecureStorage): Manejado por Storage.SecureStorage
+- Autenticación mediante OAuth 2.0 usando MSAL
+  - Implementacion por MSAL Package
+- Almacenamiento seguro de tokens (SecureStorage): 
+  - Manejado por Storage.SecureStorage, puede ser visto en BiometricLogin (Activate Biometric Login)
 - Integración con autenticación biométrica (Plugin.Fingerprint o Essentials)
   - Se opto por una implementacion nativa con la finalidad de evitar usar paquetes en version alfa asi como mejor manejo de excepciones y mensajes, android 28++
-
 - Internacionalización (mínimo Español/Inglés)
   - Uso de archivos Resx
-Pruebas Unitarias (mínimo dos pruebas, usando xUnit y Moq)
-Integración de mapas con Google Maps o similares con optimización de rendimiento (marcadores agrupados/clustering)
+
 - Archivo YAML o instrucciones para automatización CI/CD (Fastlane, Azure DevOps, o GitHub Actions)
   - En este caso, no hay un sitio de deployment, por lo que me limite unicamente a la configuracion basica del manifest/info.plist
+- Pendiente de implementacion
+  - Consumo eficiente de API REST usando HttpClient
+  - Pruebas Unitarias (mínimo dos pruebas, usando xUnit y Moq)
+  - Integración de mapas con Google Maps o similares con optimización de rendimiento (marcadores agrupados/clustering)
